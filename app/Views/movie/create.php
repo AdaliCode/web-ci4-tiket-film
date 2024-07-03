@@ -3,6 +3,7 @@
 <div class="row">
     <div class="col-8">
         <h2 class="my-3">Tambah Data Film</h2>
+        <?= session('validation'); ?>
         <form action="/movie/save" method="post">
             <?= csrf_field() ?>
             <div class="row mb-3">

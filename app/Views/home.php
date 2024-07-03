@@ -1,5 +1,7 @@
 <?= $this->extend('layout/template'); ?>
 <?= $this->section('container'); ?>
+
+
 <div class="row align-items-center">
     <div class="col">
         <h1>TELAH HADIR DI SINEMA</h1>
@@ -8,6 +10,11 @@
         <a href="<?= base_url('/movie/create'); ?>" class="btn btn-primary float-end">Tambah Film</a>
     </div>
 </div>
+<?php if (session()->getFlashdata('pesan')) : ?>
+    <div class="alert alert-success" role="alert">
+        <?= session()->getFlashdata('pesan'); ?>
+    </div>
+<?php endif; ?>
 <div class="row">
     <?php for ($i = 0; $i < 4; $i++) : ?>
         <div class="col-3">
