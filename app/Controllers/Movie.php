@@ -41,7 +41,7 @@ class Movie extends BaseController
             'cover' => 'required',
         ])) {
             $validation = \Config\Services::validation();
-            return redirect()->back()->withInput()->with('validation', $validation->listErrors());
+            return redirect()->back()->withInput()->with('validation', $validation);
         }
         $slug = url_title($this->request->getVar('title'), '-', true);
         $this->movieModel->save([
