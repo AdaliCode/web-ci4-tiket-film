@@ -6,7 +6,7 @@
         <?php for ($i = 0; $i < 4; $i++) : ?>
             <div class="col-3">
                 <img src="film.jpg" alt="" width="100%">
-                <p class="mt-1">DESPICABLE ME 4</p>
+                <p class="mt-1"><?= strtoupper($movies[$i]['title'] ?? 'A QUIET PLACE: DAY ONE'); ?></p>
             </div>
         <?php endfor; ?>
     </div>

@@ -2,13 +2,21 @@
 
 namespace App\Controllers;
 
+use App\Models\MovieModel;
+
 class Home extends BaseController
 {
+    protected $movieModel;
+    public function __construct()
+    {
+        $this->movieModel = new MovieModel();
+    }
     public function index()
     {
         $data = [
             'title' => 'IntiFilm',
-            'addActive' => 'home'
+            'addActive' => 'home',
+            'movies' => $this->movieModel->findAll()
         ];
         return view('home', $data);
     }
