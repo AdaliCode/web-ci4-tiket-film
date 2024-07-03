@@ -22,4 +22,14 @@ class Movie extends BaseController
         ];
         return view('movie/detail', $data);
     }
+    public function create()
+    {
+        $data = ['title' => 'Tambah Data Film', 'addActive' => 'home'];
+        return view('movie/create', $data);
+    }
+
+    public function save()
+    {
+        return var_dump($this->request->getVar());
+    }
 }

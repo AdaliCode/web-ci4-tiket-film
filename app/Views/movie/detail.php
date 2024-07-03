@@ -6,7 +6,7 @@
             <img src="../film.jpg" alt="" class="rounded" width="100%">
         </div>
         <div class="col">
-            <h1><?= $detailMovie['title']; ?></h1>
+            <h1><?= strtoupper($detailMovie['title']); ?></h1>
             <h5>XXI, CGV, Cinépolis</h5>
             <p><?= $detailMovie['description']; ?></p>
             <p>WATCH THE TRAILER | 1h 25min</p>

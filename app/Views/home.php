@@ -1,7 +1,14 @@
 <?= $this->extend('layout/template'); ?>
 <?= $this->section('container'); ?>
-<h1>TELAH HADIR DI SINEMA</h1>
-<div class="row mt-3">
+<div class="row align-items-center">
+    <div class="col">
+        <h1>TELAH HADIR DI SINEMA</h1>
+    </div>
+    <div class="col">
+        <a href="<?= base_url('/movie/create'); ?>" class="btn btn-primary float-end">Tambah Film</a>
+    </div>
+</div>
+<div class="row">
     <?php for ($i = 0; $i < 4; $i++) : ?>
         <div class="col-3">
             <?php $slug = $movies[$i]['slug'] ?? 'ipar-adalah-maut' ?>
