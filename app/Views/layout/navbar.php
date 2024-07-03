@@ -7,13 +7,13 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item mx-1">
-                    <a class="nav-link active" aria-current="page" href="<?= base_url('/'); ?>">HOME</a>
+                    <a class="nav-link <?= ($addActive == 'home') ? 'active' : ''; ?>" aria-current="page" href="<?= base_url('/'); ?>">HOME</a>
                 </li>
                 <li class="nav-item mx-1">
-                    <a class="nav-link" href="<?= base_url('/about'); ?>">ABOUT</a>
+                    <a class="nav-link <?= ($addActive == 'about') ? 'active' : ''; ?>" href="<?= base_url('/about'); ?>">ABOUT</a>
                 </li>
                 <li class="nav-item mx-1">
-                    <a class="nav-link" href="<?= base_url('/blog'); ?>">BLOG</a>
+                    <a class="nav-link <?= ($addActive == 'blog') ? 'active' : ''; ?>" href="<?= base_url('/blog'); ?>">BLOG</a>
                 </li>
             </ul>
         </div>

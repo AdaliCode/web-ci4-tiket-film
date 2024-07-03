@@ -4,8 +4,28 @@ namespace App\Controllers;
 
 class Home extends BaseController
 {
-    public function index(): string
+    public function index()
     {
-        return view('home');
+        $data = [
+            'title' => 'IntiFilm',
+            'addActive' => 'home'
+        ];
+        return view('home', $data);
+    }
+    public function about()
+    {
+        $data = [
+            'title' => 'IntiFilm | about',
+            'addActive' => 'about'
+        ];
+        return view('about', $data);
+    }
+    public function blog()
+    {
+        $data = [
+            'title' => 'IntiFilm | Blog',
+            'addActive' => 'blog'
+        ];
+        return view('blog', $data);
     }
 }
