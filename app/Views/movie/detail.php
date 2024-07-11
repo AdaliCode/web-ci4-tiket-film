@@ -3,13 +3,13 @@
 <div class="p-5 bg-primary text-light">
     <div class="row align-items-center" id="movieDetail">
         <div class="col-3">
-            <img src="../film.jpg" alt="" class="rounded" width="100%">
+            <img src="../cover/<?= $detailMovie['cover'] ?? 'defaultCover.jpg'; ?>" alt="" class="rounded" width="100%">
         </div>
         <div class="col">
             <h1><?= strtoupper($detailMovie['title']); ?></h1>
             <h5>XXI, CGV, Cinépolis</h5>
             <p><?= $detailMovie['description']; ?></p>
-            <p>WATCH THE TRAILER | 1h 25min</p>
+            <p>WATCH THE TRAILER | <?= $detailMovie['hour_duration']; ?>h <?= $detailMovie['minutes_duration']; ?>min</p>
         </div>
     </div>
 </div>
@@ -17,7 +17,7 @@
 <?= $this->section('container'); ?>
 <div class="row" id="movieCast">
     <h1>TRAILER</h1>
-    <iframe width="100%" height="500" src="https://www.youtube.com/embed/LtNYaH61dXY?autoplay">
+    <iframe width="100%" height="500" src="https://www.youtube.com/embed/<?= $detailMovie['trailer']; ?>?autoplay">
     </iframe>
 </div>
 <hr>
@@ -28,12 +28,11 @@
             <div class="card mb-3">
                 <div class="row g-0">
                     <div class="col-md-4">
-                        <img src="{{ asset('cast.jpg') }}" class="img-fluid rounded-start">
+                        <img src="../cast/defaultCast.jpeg" class="img-fluid rounded-start">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h5 class="card-title">Sandra Bullock</h5>
-                            <h6 class="card-subtitle mb-2 text-body-secondary">Scarlet Overkill (voice)</h6>
+                            <h5 class="card-title"><?= $detailMovie['cast']; ?></h5>
                         </div>
                     </div>
                 </div>

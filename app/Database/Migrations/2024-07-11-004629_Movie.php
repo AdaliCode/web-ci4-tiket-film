@@ -28,6 +28,29 @@ class Movie extends Migration
                 'type' => 'TEXT',
                 'null' => true,
             ],
+            'cast' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '255',
+            ],
+            'cover' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '255',
+            ],
+            'release' => [
+                'type' => 'DATE',
+            ],
+            'hour_duration' => [
+                'type' => 'INT',
+                'constraint' => 2,
+            ],
+            'minutes_duration' => [
+                'type' => 'INT',
+                'constraint' => 2,
+            ],
+            'trailer' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '255',
+            ],
             'created_at' => [
                 'type' => 'DATETIME',
                 'null' => true,

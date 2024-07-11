@@ -18,10 +18,10 @@
 <div class="row">
     <?php for ($i = 0; $i < 4; $i++) : ?>
         <div class="col-3">
-            <?php $slug = $movies[$i]['slug'] ?? 'ipar-adalah-maut' ?>
+            <?php $slug = $movies[$i]['slug'] ?>
             <a href="<?= base_url('/movie/' . $slug); ?>" class="text-decoration-none text-dark">
-                <img src="film.jpg" alt="" width="100%" class="rounded">
-                <p class="mt-1"><?= strtoupper($movies[$i]['title'] ?? 'A QUIET PLACE: DAY ONE'); ?></p>
+                <img src="cover/<?= $movies[$i]['cover'] ?? 'defaultCover.jpg'; ?>" alt="" width="100%" class="rounded">
+                <p class="mt-1"><?= strtoupper($movies[$i]['title']); ?></p>
             </a>
         </div>
     <?php endfor; ?>
