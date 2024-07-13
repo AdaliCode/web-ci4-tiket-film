@@ -29,7 +29,7 @@
                 <div class="col-auto"><img src="../../cast/defaultCast.jpeg" class="rounded-circle" width="100" height="100"></div>
                 <div class="col-auto">
                     <h5 class="text-secondary">Casts</h5>
-                    <h4>Lee Je-Hoon</h4>
+                    <h4><?= (isset($detailMovie['all_casts']) && isset(explode(',', $detailMovie['all_casts'])[$i])) ? explode(',', $detailMovie['all_casts'])[$i] : 'Ma Dong Seok'; ?></h4>
                 </div>
             </div>
         </div>

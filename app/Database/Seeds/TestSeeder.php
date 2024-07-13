@@ -10,5 +10,6 @@ class TestSeeder extends Seeder
     {
         $this->call('MovieSeeder');
         $this->call('CastSeeder');
+        $this->call('MovieCastSeeder');
     }
 }

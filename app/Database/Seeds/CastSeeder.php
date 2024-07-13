@@ -16,5 +16,8 @@ class CastSeeder extends Seeder
         }
         array_push($data, getCast('Lee Je-Hoon'));
         array_push($data, getCast('Koo Kyo-Hwan'));
+        array_push($data, getCast('Michelle Ziudith'));
+        array_push($data, getCast('Deva Mahenra'));
+        $this->db->table('casts')->insertBatch($data);
     }
 }
