@@ -13,27 +13,10 @@ class Home extends BaseController
     }
     public function index()
     {
-        // $data = [
-        //     [
-        //         'title' =>  'Despicable Me 4',
-        //     ],
-        //     [
-        //         'title' =>  'Ipar adalah Maut',
-        //     ],
-        // ];
-        // $data = [];
-        // function getData($title)
-        // {
-        //     $slug = strtolower(url_title($title, '-'));
-        //     return ['title' => $title, 'slug' => $slug, 'created_at' => 2];
-        // }
-        // array_push($data, getData('Despicable Me 4'));
-        // array_push($data, getData('Ipar adalah Maut'));
-        // return var_dump($data);
         $data = [
             'title' => 'IntiFilm',
             'addActive' => 'home',
-            'movies' => $this->movieModel->findAll()
+            'movies' => $this->movieModel->paginate(4)
         ];
         return view('home', $data);
     }

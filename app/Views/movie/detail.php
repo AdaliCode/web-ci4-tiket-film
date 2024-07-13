@@ -3,7 +3,7 @@
 <div class="p-5 bg-primary text-light">
     <div class="row align-items-center" id="movieDetail">
         <div class="col-3">
-            <img src="../cover/<?= $detailMovie['cover'] ?? 'defaultCover.jpg'; ?>" alt="" class="rounded" width="100%">
+            <img src="../../cover/<?= $detailMovie['cover'] ?? 'defaultCover.jpg'; ?>" alt="" class="rounded" width="100%">
         </div>
         <div class="col">
             <h1><?= strtoupper($detailMovie['title']); ?></h1>
@@ -28,7 +28,7 @@
             <div class="card mb-3">
                 <div class="row g-0">
                     <div class="col-md-4">
-                        <img src="../cast/defaultCast.jpeg" class="img-fluid rounded-start">
+                        <img src="../../cast/defaultCast.jpeg" class="img-fluid rounded-start">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">

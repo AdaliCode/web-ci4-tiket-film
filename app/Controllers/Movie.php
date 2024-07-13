@@ -12,6 +12,19 @@ class Movie extends BaseController
         $this->movieModel = new MovieModel();
     }
 
+    public function index()
+    {
+        // $currentPage = $this->request->getVar('page_movie') ? $this->request->getVar('page_movie') : 1;
+        $data = [
+            'title' => 'IntiFilm',
+            'addActive' => 'home',
+            'movies' => $this->movieModel->paginate(10, 'movie'),
+            'pager' => $this->movieModel->pager,
+            // 'currentPage' => $currentPage
+        ];
+        return view('movie/index', $data);
+    }
+
     public function detail($slug)
     {
         $detailMovie = $this->movieModel->where(['slug' => $slug])->first();

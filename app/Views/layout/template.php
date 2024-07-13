@@ -20,7 +20,7 @@
 <body>
     <?= $this->include('layout/navbar'); ?>
     <?= $this->renderSection('no-container-top'); ?>
-    <div class="container py-3">
+    <div class="container py-5">
         <?= $this->renderSection('container'); ?>
     </div>
     <?= $this->renderSection('no-container-bottom'); ?>

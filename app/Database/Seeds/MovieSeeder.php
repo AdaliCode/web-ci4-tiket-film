@@ -15,12 +15,13 @@ class MovieSeeder extends Seeder
             $slug = strtolower(url_title($title, '-'));
             return ['title' => $title, 'slug' => $slug, 'cast' => $cast, 'cover' => $cover, 'release' => $release, 'hour_duration' => $hour_duration, 'minutes_duration' => $minutes_duration, 'trailer' => $trailer, 'created_at' => Time::now(), 'updated_at' => Time::now()];
         }
-        array_push($data, getMovie('Despicable Me 4'));
-        array_push($data, getMovie('Ipar adalah Maut'));
-        array_push($data, getMovie('Escape', 'escape.jpeg', trailer: '9mPzDILlt5g'));
-        array_push($data, getMovie('Twisters'));
+        // total film 21
+        array_push($data, getMovie('Despicable Me 4', hour_duration: 1, minutes_duration: 34));
+        array_push($data, getMovie('Ipar adalah Maut', minutes_duration: 11));
+        array_push($data, getMovie('Escape', 'escape.jpeg', hour_duration: 1, minutes_duration: 34, trailer: '9mPzDILlt5g'));
+        array_push($data, getMovie('Twisters', minutes_duration: 2));
         $faker = \Faker\Factory::create('id_ID');
-        for ($i = 0; $i < 6; $i++) {
+        for ($i = 0; $i < 17; $i++) {
             array_push($data, getMovie($faker->sentence(2)));
         }
         $this->db->table('movies')->insertBatch($data);

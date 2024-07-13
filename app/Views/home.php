@@ -7,7 +7,10 @@
         <h1>TELAH HADIR DI SINEMA</h1>
     </div>
     <div class="col">
-        <a href="<?= base_url('/movie/create'); ?>" class="btn btn-primary float-end">Tambah Film</a>
+        <div class="float-end">
+            <a href="<?= base_url('/movie/create'); ?>" class="btn btn-primary">Tambah Film</a>
+            <a href="<?= base_url('/movie'); ?>" class="btn btn-success mx-1">Lainnya</a>
+        </div>
     </div>
 </div>
 <?php if (session()->getFlashdata('pesan')) : ?>
@@ -16,22 +19,22 @@
     </div>
 <?php endif; ?>
 <div class="row">
-    <?php for ($i = 0; $i < 4; $i++) : ?>
+    <?php foreach ($movies as $key => $value) : ?>
         <div class="col-3">
-            <?php $slug = $movies[$i]['slug'] ?>
-            <a href="<?= base_url('/movie/' . $slug); ?>" class="text-decoration-none text-dark">
-                <img src="cover/<?= $movies[$i]['cover'] ?? 'defaultCover.jpg'; ?>" alt="" width="100%" class="rounded">
-                <p class="mt-1"><?= strtoupper($movies[$i]['title']); ?></p>
+            <?php $slug = $value['slug'] ?>
+            <a href="<?= base_url('movie/' . $slug); ?>" class="text-decoration-none text-dark">
+                <img src="../cover/<?= $value['cover'] ?? 'defaultCover.jpg'; ?>" alt="" width="100%" class="rounded">
+                <p class="mt-1"><?= strtoupper($value['title']); ?></p>
             </a>
         </div>
-    <?php endfor; ?>
+    <?php endforeach; ?>
 </div>
 <hr>
 <h1>BLOG FILM</h1>
 <?php for ($i = 0; $i < 5; $i++) : ?>
     <div class="row mt-3">
         <div class="col-4">
-            <img src="blog.jpg" alt="" width="100%">
+            <img src="../blog.jpg" alt="" width="100%">
         </div>
         <div class="col">
             <h4>Inside Out 2 Kalahkan Dune Part: 2 Sebagai Film Terlaris Sejauh ini di Amerika Serikat!</h4>
