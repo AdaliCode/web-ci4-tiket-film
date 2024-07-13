@@ -31,7 +31,6 @@ class Movie extends BaseController
         if (!isset($detailMovie)) {
             $detailMovie = $this->movieModel->where(['slug' => $slug])->first();
         }
-        // return var_dump(isset($detailMovie['all_casts']));
         $data = [
             'title' => 'IntiFilm | ' . $detailMovie['title'],
             'addActive' => 'home',
@@ -43,6 +42,67 @@ class Movie extends BaseController
     {
         $data = ['title' => 'Tambah Data Film', 'addActive' => 'home'];
         return view('movie/create', $data);
+    }
+    public function edit($id)
+    {
+        $detailMovie = $this->movieModel->casts()->find($id);
+        if (!isset($detailMovie)) {
+            $detailMovie = $this->movieModel->find($id);
+        }
+        $data = [
+            'title' => 'Ubah Data Film',
+            'addActive' => 'home',
+            'detailMovie' => $detailMovie
+        ];
+        return view('movie/edit', $data);
+    }
+
+    public function update($id)
+    {
+        if (!$this->validate([
+            'title' => [
+                'rules' => 'required|is_unique[movies.title]',
+                'errors' => [
+                    'required' => '{field} film harus diisi',
+                    'is_unique' => '{field} film sudah terdaftar'
+                ]
+            ],
+            'cover' => 'required',
+        ])) {
+            $validation = \Config\Services::validation();
+            return redirect()->back()->withInput()->with('validation', $validation);
+        }
+        // // return var_dump($this->request->getVar('title'));
+        // $slug = strtolower(url_title($this->request->getVar('title'), '-'));
+        // return var_dump($slug);
+        // $detailMovie = $this->movieModel->casts()->where(['slug' => $slug])->first();
+        // if (!isset($detailMovie)) {
+        //     $detailMovie = $this->movieModel->where(['slug' => $slug])->first();
+        // }
+        // if ($detailMovie['title'] == $this->request->getVar('title')) {
+        //     $rule_title = 'required';
+        // } else {
+        //     $rule_title = 'required|is_unique[movies.title]';
+        // }
+        // if (!$this->validate([
+        //     'title' => [
+        //         'rules' => $rule_title,
+        //         'errors' => [
+        //             'required' => 'judul film harus diisi',
+        //             'is_unique' => 'judul film sudah terdaftar'
+        //         ]
+        //     ], 'cover' => [
+        //         'rules' => 'required',
+        //         'errors' => [
+        //             'required' => '{field} film harus diisi',
+        //         ]
+        //     ]
+        // ])) {
+        //     return 'lll';
+        //     $validation = \Config\Services::validation();
+        //     return redirect()->back()->withInput()->with('validation', $validation);
+        // }
+        // return var_dump($detailMovie);
     }
 
     public function save()
