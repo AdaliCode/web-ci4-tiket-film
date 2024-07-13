@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class Movie extends Migration
+class Cast extends Migration
 {
     public function up()
     {
@@ -15,35 +15,11 @@ class Movie extends Migration
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
-            'title' => [
+            'name' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '255',
-            ],
-            'slug' => [
-                'type'       => 'VARCHAR',
-                'constraint' => '255',
-                'unique'     => true
-            ],
-            'description' => [
-                'type' => 'TEXT',
-                'null' => true,
             ],
             'cover' => [
-                'type'       => 'VARCHAR',
-                'constraint' => '255',
-            ],
-            'release' => [
-                'type' => 'DATE',
-            ],
-            'hour_duration' => [
-                'type' => 'INT',
-                'constraint' => 2,
-            ],
-            'minutes_duration' => [
-                'type' => 'INT',
-                'constraint' => 2,
-            ],
-            'trailer' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '255',
             ],
@@ -57,11 +33,11 @@ class Movie extends Migration
             ],
         ]);
         $this->forge->addKey('id', true);
-        $this->forge->createTable('movies');
+        $this->forge->createTable('casts');
     }
 
     public function down()
     {
-        $this->forge->dropTable('movies');
+        $this->forge->dropTable('casts');
     }
 }

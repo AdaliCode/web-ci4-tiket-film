@@ -25,16 +25,11 @@
     <h1>CAST & CREW</h1>
     <?php for ($i = 0; $i < 6; $i++) : ?>
         <div class="col-md-4">
-            <div class="card mb-3">
-                <div class="row g-0">
-                    <div class="col-md-4">
-                        <img src="../../cast/defaultCast.jpeg" class="img-fluid rounded-start">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title"><?= $detailMovie['cast']; ?></h5>
-                        </div>
-                    </div>
+            <div class="row align-items-center py-3">
+                <div class="col-auto"><img src="../../cast/defaultCast.jpeg" class="rounded-circle" width="100" height="100"></div>
+                <div class="col-auto">
+                    <h5 class="text-secondary">Casts</h5>
+                    <h4>Lee Je-Hoon</h4>
                 </div>
             </div>
         </div>
