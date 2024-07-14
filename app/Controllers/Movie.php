@@ -38,11 +38,6 @@ class Movie extends BaseController
         ];
         return view('movie/detail', $data);
     }
-    public function create()
-    {
-        $data = ['title' => 'Tambah Data Film', 'addActive' => 'home'];
-        return view('movie/create', $data);
-    }
     public function edit($id)
     {
         $detailMovie = $this->movieModel->casts()->find($id);
@@ -56,77 +51,43 @@ class Movie extends BaseController
         ];
         return view('movie/edit', $data);
     }
-
     public function update($id)
     {
+        $oldMovie  = $this->movieModel->find($id);
+        // return var_dump(intval($this->request->getVar('hour_duration')));
+        if ($oldMovie['slug'] == strtolower(url_title($this->request->getVar('title'), '-'))) {
+            $rule_title = 'required';
+        } else {
+            $rule_title = 'required|is_unique[movies.title]';
+        }
         if (!$this->validate([
             'title' => [
-                'rules' => 'required|is_unique[movies.title]',
+                'rules' => $rule_title,
                 'errors' => [
-                    'required' => '{field} film harus diisi',
-                    'is_unique' => '{field} film sudah terdaftar'
+                    'required' => 'judul film harus diisi',
+                    'is_unique' => 'judul film sudah terdaftar'
                 ]
             ],
-            'cover' => 'required',
+            'hour_duration' => 'required',
+            'minutes_duration' => 'required',
+            'release' => 'required',
+            'trailer' => 'required',
         ])) {
-            $validation = \Config\Services::validation();
+            $validation = \Config\Services::validation()->getErrors();
             return redirect()->back()->withInput()->with('validation', $validation);
         }
-        // // return var_dump($this->request->getVar('title'));
-        // $slug = strtolower(url_title($this->request->getVar('title'), '-'));
-        // return var_dump($slug);
-        // $detailMovie = $this->movieModel->casts()->where(['slug' => $slug])->first();
-        // if (!isset($detailMovie)) {
-        //     $detailMovie = $this->movieModel->where(['slug' => $slug])->first();
-        // }
-        // if ($detailMovie['title'] == $this->request->getVar('title')) {
-        //     $rule_title = 'required';
-        // } else {
-        //     $rule_title = 'required|is_unique[movies.title]';
-        // }
-        // if (!$this->validate([
-        //     'title' => [
-        //         'rules' => $rule_title,
-        //         'errors' => [
-        //             'required' => 'judul film harus diisi',
-        //             'is_unique' => 'judul film sudah terdaftar'
-        //         ]
-        //     ], 'cover' => [
-        //         'rules' => 'required',
-        //         'errors' => [
-        //             'required' => '{field} film harus diisi',
-        //         ]
-        //     ]
-        // ])) {
-        //     return 'lll';
-        //     $validation = \Config\Services::validation();
-        //     return redirect()->back()->withInput()->with('validation', $validation);
-        // }
-        // return var_dump($detailMovie);
-    }
-
-    public function save()
-    {
-        if (!$this->validate([
-            'title' => [
-                'rules' => 'required|is_unique[movies.title]',
-                'errors' => [
-                    'required' => '{field} film harus diisi',
-                    'is_unique' => '{field} film sudah terdaftar'
-                ]
-            ],
-            'cover' => 'required',
-        ])) {
-            $validation = \Config\Services::validation();
-            return redirect()->back()->withInput()->with('validation', $validation);
-        }
-        $slug = url_title($this->request->getVar('title'), '-', true);
+        // return $this->request->getVar('minutes_duration');
         $this->movieModel->save([
+            'id' => $id,
             'title' => $this->request->getVar('title'),
-            'slug' => $slug,
-            'cover' => $this->request->getVar('cover'),
+            'slug' => strtolower(url_title($this->request->getVar('title'), '-')),
+            'hour_duration' => $this->request->getVar('hour_duration'),
+            'minutes_duration' => $this->request->getVar('minutes_duration'),
+            'description' => $this->request->getVar('description'),
+            'release' => $this->request->getVar('release'),
+            'trailer' => $this->request->getVar('trailer'),
         ]);
-        session()->setFlashdata('pesan', 'Data berhasil ditambahkan');
-        return redirect()->to(base_url('/'));
+        session()->setFlashdata('pesan', 'Data berhasil diubah');
+        return redirect()->to('/');
     }
 }

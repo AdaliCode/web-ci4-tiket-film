@@ -8,7 +8,7 @@ class MovieModel extends Model
 {
     protected $table = 'movies';
     protected $useTimestamps = true;
-    protected $allowedFields = ['title', 'slug', 'description', 'cover'];
+    protected $allowedFields = ['title', 'slug', 'description', 'release', 'hour_duration', 'minutes_duration', 'trailer'];
 
     public function casts()
     {

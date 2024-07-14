@@ -8,8 +8,7 @@
     </div>
     <div class="col">
         <div class="float-end">
-            <a href="<?= base_url('/movie/create'); ?>" class="btn btn-primary">Tambah Film</a>
-            <a href="<?= base_url('/movie'); ?>" class="btn btn-success mx-1">Lainnya</a>
+            <a href="<?= base_url('/movie'); ?>" class="btn btn-success">Movie Lainnya</a>
         </div>
     </div>
 </div>

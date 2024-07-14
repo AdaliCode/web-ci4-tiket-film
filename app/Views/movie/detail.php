@@ -8,7 +8,10 @@
         <div class="col">
             <h1><?= strtoupper($detailMovie['title']); ?></h1>
             <h5>XXI, CGV, Cinépolis</h5>
-            <?= $detailMovie['description']; ?><br>
+            <hr>
+            <span class="text-dark"><?= (!$detailMovie['description'] || $detailMovie['description'] == '') ? 'belum ada Deskripsi Film' : $detailMovie['description']; ?></span>
+            <br>
+            <hr>
             WATCH THE TRAILER | <?= $detailMovie['hour_duration']; ?>h <?= $detailMovie['minutes_duration']; ?>min | <a href="<?= base_url('/movie/edit/' . $detailMovie['id']); ?>" class="text-decoration-none text-light">Ubah Film</a>
         </div>
     </div>
